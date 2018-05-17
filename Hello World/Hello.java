@@ -5,6 +5,7 @@
  * @version 15 May 2018
  */
 import lejos.nxt.Button;
+import lejos.nxt.Motor;
 
 public class Hello
 {
