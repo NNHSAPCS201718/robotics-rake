@@ -7,6 +7,7 @@
  */
 
 import lejos.nxt.*;
+import lejos.util.*;
 
 public class MotorControl
 {
@@ -22,12 +23,25 @@ public class MotorControl
         Button.waitForAnyPress();
         Motor.B.stop();
         
+        Button.waitForAnyPress();
         
         LCD.drawString("Program 2", 0, 0);
         Motor.B.setSpeed(2);
         Motor.B.forward();
-        Delay.msDelay(2000);
-        LCD.drawString(""+Motor.B.getTachoCount(),0,0);
-        
+        Delay d = new Delay();
+        d.msDelay(2000);
+        LCD.drawString(""+Motor.B.getTachoCount(),0,1);
+        Motor.B.stop();
+        LCD.drawString(""+Motor.B.getTachoCount(),0,2);
+        Motor.B.backward();
+        int tach = Motor.B.getTachoCount();
+        while (tach > 0)
+        {
+            tach = Motor.B.getTachoCount();
+        }
+        LCD.drawString(""+Motor.B.getTachoCount(),0,3);
+        Motor.B.stop();
+        LCD.drawString(""+Motor.B.getTachoCount(),0,4);
+        Button.waitForAnyPress();
     }
 }
