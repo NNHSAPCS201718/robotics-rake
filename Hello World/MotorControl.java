@@ -23,9 +23,9 @@ public class MotorControl
         Button.waitForAnyPress();
         Motor.B.stop();
         LCD.clear();
-        
+
         Button.waitForAnyPress();
-        
+
         LCD.drawString("Program 2", 0, 0);
         Motor.B.setSpeed(360 * 2);
         Motor.B.forward();
@@ -45,7 +45,7 @@ public class MotorControl
         LCD.drawString(""+Motor.B.getTachoCount(),0,4);
         Button.waitForAnyPress();
         LCD.clear();
-        
+
         LCD.drawString("Program 3", 0, 0);
         Button.waitForAnyPress();
         Motor.B.rotate(360 * 4);
@@ -54,7 +54,7 @@ public class MotorControl
         LCD.drawString(""+Motor.B.getTachoCount(),0,2);
         Button.waitForAnyPress();
         LCD.clear();
-        
+
         LCD.drawString("Program 4", 0, 0);
         Motor.B.resetTachoCount();
         Motor.B.backward();
@@ -71,13 +71,31 @@ public class MotorControl
         LCD.drawString("" + Motor.B.getTachoCount(), 0, 1);
         LCD.clear();
         Button.waitForAnyPress();
-        
+
         LCD.drawString("Program 5", 0, 0);
         Motor.A.setSpeed(360 * 2);
         Motor.B.setSpeed(360 * 2);
         Motor.C.setSpeed(360 * 2);
-        
-        int startTime = elapsed();    
-        
+
+        Motor.A.forward();
+        Motor.B.forward();
+        Motor.C.forward();
+        for (int j = 0; j < 8; j++)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                d.msDelay(200);
+                LCD.drawString(""+Motor.A.getTachoCount(),0,j*5+i);
+                LCD.drawString(""+Motor.B.getTachoCount(),4,j*5+i);
+                LCD.drawString(""+Motor.C.getTachoCount(),8,j*5+i);
+            }
+            Motor.A.resetTachoCount();
+            Motor.B.resetTachoCount();
+            Motor.C.resetTachoCount();
+        }
+        Motor.A.stop();
+        Motor.B.stop();
+        Motor.C.stop();
+        Button.waitForAnyPress();
     }
 }
