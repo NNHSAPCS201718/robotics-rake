@@ -1,3 +1,6 @@
+import lejos.nxt.*;
+import lejos.util.*;
+
 public class LightSensorListener
 {
     /**
