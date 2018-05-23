@@ -76,7 +76,9 @@ public class MotorControl
         Motor.A.setSpeed(360 * 2);
         Motor.B.setSpeed(360 * 2);
         Motor.C.setSpeed(360 * 2);
-
+        Motor.A.resetTachoCount();
+        Motor.B.resetTachoCount();
+        Motor.C.resetTachoCount();
         Motor.A.forward();
         Motor.B.forward();
         Motor.C.forward();
